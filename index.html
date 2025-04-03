@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Cor do Texto</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        #texto { font-size: 20px; color: black; }
+        button { margin-top: 20px; padding: 10px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
 
+    <p id="texto">Este é um texto cujo a cor pode ser alterada.</p>
+    <button onclick="mudarCor()">Mudar Cor do Texto</button>
+
+    <script>
+        function mudarCor() {
+            const coresAcessiveis = [
+                { cor: "black", fundo: "white" },
+                { cor: "white", fundo: "black" },
+                { cor: "blue", fundo: "yellow" },
+                { cor: "yellow", fundo: "blue" },
+                { cor: "green", fundo: "white" },
+                { cor: "white", fundo: "green" }
+            ];
+
+            const texto = document.getElementById("texto");
+            const body = document.body;
+            let novaCor;
+
+            do {
+                novaCor = coresAcessiveis[Math.floor(Math.random() * coresAcessiveis.length)];
+            } while (texto.style.color === novaCor.cor);
+
+            texto.style.color = novaCor.cor;
+            body.style.backgroundColor = novaCor.fundo;
+        }
+    </script>
+
+</body>
+</html>
